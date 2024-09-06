@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.thanhxv.mapper.ProfileMapper;
-import com.thanhxv.repository.httpclient.ProfileClient;
+import com.thanhxv.httpclient.ProfileClient;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
