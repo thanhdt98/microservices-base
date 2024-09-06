@@ -1,4 +1,4 @@
-package com.thanhxv.dto.request;
+package com.thanhxv.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -10,8 +10,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProfileCreationRequest {
-    String userId;
+public class ProfileResponse {
+    String id;
     String firstName;
     String lastName;
     LocalDate dob;
