@@ -10,16 +10,16 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/internal/users")
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @Log4j2
-public class UserProfileController {
+public class InternalUserProfileController {
     UserProfileService userProfileService;
 
-    @GetMapping("/{profileId}")
-    ProfileResponse getProfileById(@PathVariable String profileId) {
-        return userProfileService.getProfileById(profileId);
+    @PostMapping()
+    ProfileResponse createProfile(@RequestBody ProfileCreationRequest request) {
+        return userProfileService.createProfile(request);
     }
 
 }
