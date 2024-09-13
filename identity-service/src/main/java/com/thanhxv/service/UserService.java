@@ -78,7 +78,7 @@ public class UserService {
         var authHeader = servletRequestAttributes.getRequest().getHeader("Authorization");
         log.info("Header: {}", authHeader);
 
-        var profileResponse = profileClient.createProfile(authHeader, profileCreationRequest);
+        var profileResponse = profileClient.createProfile(profileCreationRequest);
         log.info("profileResponse {}", profileResponse.toString());
 
         return userMapper.toUserResponse(user);
