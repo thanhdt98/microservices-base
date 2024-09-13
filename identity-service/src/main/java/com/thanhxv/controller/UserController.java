@@ -26,7 +26,7 @@ import lombok.extern.log4j.Log4j2;
 public class UserController {
     UserService userService;
 
-    @PostMapping()
+    @PostMapping("/registration")
     ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request) {
         log.info("UserController createUser");
         return ApiResponse.<UserResponse>builder()

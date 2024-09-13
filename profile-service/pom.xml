@@ -34,6 +34,14 @@
 		<spotless.version>2.43.0</spotless.version>
 	</properties>
 	<dependencies>
+
+		<!--	security	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<!--	security	-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-neo4j</artifactId>
