@@ -29,6 +29,8 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 @RequiredArgsConstructor
@@ -65,6 +67,16 @@ public class UserService {
 
         var profileCreationRequest = profileMapper.toProfileCreationRequest(request);
         profileCreationRequest.setUserId(user.getId());
+
+        /**
+         * explain set token for call to another services
+         * tuy nhien giua cac service co the call nhau rat nhieu lan nen code o day se bi duplicate => chua phai toi uu nhat
+         * @FeignClient co co che de add cho tat cac cac request
+         * cach lam dung intercept de apply cho tat ca request
+         */
+        ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        var authHeader = servletRequestAttributes.getRequest().getHeader("Authorization");
+        log.info("Header: {}", authHeader);
 
         var profileResponse = profileClient.createProfile(profileCreationRequest);
         log.info("profileResponse {}", profileResponse.toString());
