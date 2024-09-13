@@ -76,8 +76,8 @@ public class UserService {
      * explain @PreAuthorize("hasRole('ADMIN')") spring se tao 1 proxy ngay trc luc call method getAllUsers() de kiem tra role
      * @return
      */
-    //    @PreAuthorize("hasRole('ADMIN')")
-    @PreAuthorize("hasAuthority('CREATE_POST')")
+    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasAuthority('CREATE_POST')")
     public List<UserResponse> getAllUsers() {
         log.info("In method getAllUsers service");
         return userRepository.findAll().stream().map(userMapper::toUserResponse).toList();
