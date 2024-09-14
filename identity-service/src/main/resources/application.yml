@@ -24,7 +24,7 @@ spring:
     bootstrap-servers: localhost:9094
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 jwt:
   signerKey: "6092916c40862985551d0bc3e27ac332f9a824afe36ca89c418f0de63fe359f1"
   valid-duration: 3600 # second
