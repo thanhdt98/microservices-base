@@ -1,5 +1,6 @@
 package com.thanhxv.identity.service;
 
+import com.thanhxv.event.dto.NotificationEvent;
 import com.thanhxv.identity.constant.PredefinedRole;
 import com.thanhxv.identity.dto.request.UserCreationRequest;
 import com.thanhxv.identity.dto.request.UserUpdateRequest;
@@ -42,7 +43,7 @@ public class UserService {
     ProfileMapper profileMapper;
     PasswordEncoder passwordEncoder;
     ProfileClient profileClient;
-    KafkaTemplate<String, String> kafkaTemplate;
+    KafkaTemplate<String, Object> kafkaTemplate;
 
     public UserResponse createUser(UserCreationRequest request) {
         log.info("Service: createUser");
@@ -82,7 +83,14 @@ public class UserService {
         log.info("profileResponse {}", profileResponse.toString());
 
         // publish message to kafka
-        kafkaTemplate.send("onboard-successful", "welcome our new member " + user.getUsername());
+        NotificationEvent notificationEvent = NotificationEvent.builder()
+                .channel("EMAIL")
+                .recipient(request.getEmail())
+                .subject("Welcome to thanhxv")
+                .body("Hello, " + request.getUsername() + "!")
+                .build();
+
+        kafkaTemplate.send("notification-delivery", notificationEvent);
 
         return userMapper.toUserResponse(user);
     }

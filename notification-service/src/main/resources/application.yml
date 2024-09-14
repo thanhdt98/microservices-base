@@ -2,6 +2,11 @@ server:
   port: 8082
   servlet:
     context-path: /notification
+app:
+  notification:
+    mail:
+      brevo:
+        api-key: ${BREVO_MAIL_APIKEY:your-brevo-apikey}
 spring:
   application:
     name: notification-service
@@ -13,5 +18,7 @@ spring:
     consumer:
       group-id: notification-group
       auto-offset-reset: earliest
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
