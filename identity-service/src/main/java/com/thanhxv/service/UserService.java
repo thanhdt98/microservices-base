@@ -12,6 +12,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.kafka.core.KafkaTemplate;
 
 import com.thanhxv.constant.PredefinedRole;
 import com.thanhxv.dto.request.UserCreationRequest;
@@ -43,6 +44,7 @@ public class UserService {
     ProfileMapper profileMapper;
     PasswordEncoder passwordEncoder;
     ProfileClient profileClient;
+    KafkaTemplate<String, String> kafkaTemplate;
 
     public UserResponse createUser(UserCreationRequest request) {
         log.info("Service: createUser");
@@ -80,6 +82,9 @@ public class UserService {
 
         var profileResponse = profileClient.createProfile(profileCreationRequest);
         log.info("profileResponse {}", profileResponse.toString());
+
+        // publish message to kafka
+        kafkaTemplate.send("onboard-successful", "welcome our new member " + user.getUsername());
 
         return userMapper.toUserResponse(user);
     }
