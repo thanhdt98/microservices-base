@@ -6,6 +6,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableFeignClients
+/**
+ * explain @EnableFeignClients scan va inject bean
+ */
 public class IdentityServiceApplication {
 
     public static void main(String[] args) {
