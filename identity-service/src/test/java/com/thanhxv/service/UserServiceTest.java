@@ -1,4 +1,4 @@
-package com.thanhxv.service;
+package com.thanhxv.identity.service;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -17,13 +17,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.TestPropertySource;
 
-import com.thanhxv.dto.request.UserCreationRequest;
-import com.thanhxv.dto.response.UserResponse;
-import com.thanhxv.entity.Role;
-import com.thanhxv.entity.User;
-import com.thanhxv.exception.AppException;
-import com.thanhxv.repository.RoleRepository;
-import com.thanhxv.repository.UserRepository;
+import com.thanhxv.identity.dto.request.UserCreationRequest;
+import com.thanhxv.identity.dto.response.UserResponse;
+import com.thanhxv.identity.entity.Role;
+import com.thanhxv.identity.entity.User;
+import com.thanhxv.identity.exception.AppException;
+import com.thanhxv.identity.repository.RoleRepository;
+import com.thanhxv.identity.repository.UserRepository;
 
 @SpringBootTest
 /**
@@ -73,7 +73,7 @@ public class UserServiceTest {
                 .build();
 
         role = Optional.of(
-                Role.builder().name(com.thanhxv.enums.Role.USER.name()).build());
+                Role.builder().name(com.thanhxv.identity.enums.Role.USER.name()).build());
     }
 
     @Test
