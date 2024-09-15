@@ -169,8 +169,8 @@ public class AuthenticationService {
          * issuer xac dinh token duoc issue tu ai. thuong la domain
          */
         JWTClaimsSet jwtClaimsSet = new JWTClaimsSet.Builder()
-                .subject(user.getUsername())
-                .issuer("thanhxv")
+                .subject(user.getId())
+                .issuer("thanhxv.com")
                 .issueTime(new Date())
                 .expirationTime(new Date(
                         Instant.now().plus(VALID_DURATION, ChronoUnit.SECONDS).toEpochMilli()))
