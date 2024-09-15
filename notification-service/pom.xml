@@ -167,10 +167,10 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<exclude>com/thanhxv/dto/**</exclude>
-						<exclude>com/thanhxv/entity/**</exclude>
-						<exclude>com/thanhxv/mapper/**</exclude>
-						<exclude>com/thanhxv/configuration/**</exclude>
+						<exclude>com/thanhxv/notification/dto/**</exclude>
+						<exclude>com/thanhxv/notification/entity/**</exclude>
+						<exclude>com/thanhxv/notification/mapper/**</exclude>
+						<exclude>com/thanhxv/notification/configuration/**</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
