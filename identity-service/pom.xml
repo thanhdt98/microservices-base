@@ -211,10 +211,10 @@
 				</executions>
 				<configuration>
 					<excludes>
-						<exclude>com/thanhxv/dto/**</exclude>
-						<exclude>com/thanhxv/entity/**</exclude>
-						<exclude>com/thanhxv/mapper/**</exclude>
-						<exclude>com/thanhxv/configuration/**</exclude>
+						<exclude>com/thanhxv/identity/dto/**</exclude>
+						<exclude>com/thanhxv/identity/entity/**</exclude>
+						<exclude>com/thanhxv/identity/mapper/**</exclude>
+						<exclude>com/thanhxv/identity/configuration/**</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
